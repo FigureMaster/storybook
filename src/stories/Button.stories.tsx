@@ -1,26 +1,33 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { Button, IconButton } from '../components/button/Button';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default {
     title: 'common/Button',
-    component: Button,
-    argTypes: {
-        backgroundColor: { control: 'color' }
-    }
+    component: Button
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Text = Template.bind({});
-Text.args = {
+const ButtonTemplate: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export const Contained = ButtonTemplate.bind({});
+Contained.args = {
     label: 'Button'
 };
 
-const IconTemplate: ComponentStory<typeof Button> = (args) => <IconButton {...args} />;
+export const Outlined = ButtonTemplate.bind({});
+Outlined.args = {
+    label: 'Button',
+    variant: 'outlined'
+};
 
+const IconTemplate: ComponentStory<typeof IconButton> = (args) => <IconButton {...args}></IconButton>;
 export const Icon = IconTemplate.bind({});
 Icon.args = {
-    label: 'Button'
+    children: <HomeIcon />
+};
+
+export const OutlinedIcon = IconTemplate.bind({});
+OutlinedIcon.args = {
+    children: <HomeIcon />,
+    outlined: true
 };
